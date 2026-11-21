@@ -1,0 +1,56 @@
+# URF/A-SSR Hardware Preprocessing Configuration
+# Version: 1
+# Date: 2026-10-08
+#
+# All filter parameters are TBD — they must come from the hardware team.
+# Do NOT invent these values.
+# Software must not blindly repeat hardware filters.
+# See docs/preprocessing_spec.md for the software preprocessing pipeline.
+
+hardware_preprocessing_version: "1"
+
+sampling_rate_hz: 4000            # PROJECT-TARGET (confirmed at sampling stage)
+
+# ─── BANDPASS FILTER ────────────────────────────────────────────────────────
+bandpass:
+  enabled: "TBD"                  # HARDWARE-TBD
+  low_hz: "TBD"                   # HARDWARE-TBD
+  high_hz: "TBD"                  # HARDWARE-TBD
+  filter_type: "TBD"              # HARDWARE-TBD (e.g. Butterworth, Chebyshev)
+  order: "TBD"                    # HARDWARE-TBD
+
+# ─── NOTCH FILTER ───────────────────────────────────────────────────────────
+notch:
+  enabled: "TBD"                  # HARDWARE-TBD
+  frequency_hz: "TBD"             # HARDWARE-TBD (typically 50 or 60 Hz mains)
+  bandwidth_hz: "TBD"             # HARDWARE-TBD
+  q: "TBD"                        # HARDWARE-TBD
+
+# ─── LMS / NLMS ADAPTIVE FILTER ─────────────────────────────────────────────
+# If used for artifact removal, the following MUST be documented.
+# A common EEG reference electrode is NOT automatically a motion-artifact reference.
+# If reference is unknown, this entire block remains hardware-unverified.
+lms:
+  enabled: "TBD"                  # HARDWARE-TBD
+  hardware_verified: false        # false until reference signal is confirmed
+  algorithm: "TBD"                # HARDWARE-TBD (LMS / NLMS / RLS)
+  primary_signal: "TBD"           # HARDWARE-TBD: which channel(s)
+  reference_signal: "TBD"         # HARDWARE-TBD: must be documented explicitly
+  artifact_estimated: "TBD"       # HARDWARE-TBD: what artifact is being removed
+  filter_length: "TBD"            # HARDWARE-TBD
+  step_size: "TBD"                # HARDWARE-TBD
+  update_mode: "TBD"              # HARDWARE-TBD (e.g. block / sample)
+  output_definition: "TBD"        # HARDWARE-TBD: what the output represents
+
+# ─── WAVELET PROCESSING ─────────────────────────────────────────────────────
+wavelet:
+  enabled: "TBD"                  # HARDWARE-TBD
+  family: "TBD"                   # HARDWARE-TBD (e.g. db4, sym8)
+  levels: "TBD"                   # HARDWARE-TBD
+  threshold_method: "TBD"         # HARDWARE-TBD (e.g. soft, hard, BayesShrink)
+
+# ─── OUTPUT ─────────────────────────────────────────────────────────────────
+output:
+  raw_or_filtered: "TBD"          # HARDWARE-TBD: what the software receives
+  adc_units: "TBD"                # HARDWARE-TBD
+  gain_applied_in_hardware: "TBD" # HARDWARE-TBD

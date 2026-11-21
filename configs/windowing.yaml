@@ -1,0 +1,28 @@
+# URF/A-SSR Windowing Configuration
+# Version: TBD
+# Date: 2026-10-08
+#
+# All window parameters are TBD — must be determined from pilot analysis.
+# Do NOT hard-code a final window size before pilot analysis (PRD §25).
+
+windowing_version: "TBD"          # PILOT-VALIDATED
+
+# ─── WINDOW PARAMETERS ──────────────────────────────────────────────────────
+window_length_samples: "TBD"      # PILOT-VALIDATED
+stride_samples: "TBD"             # PILOT-VALIDATED
+alignment: "TBD"                  # PILOT-VALIDATED (e.g. left-aligned, centered)
+
+# ─── LABEL POLICY ───────────────────────────────────────────────────────────
+# Policy for windows that cross event boundaries
+label_policy: "TBD"               # PILOT-VALIDATED
+# Candidate policies:
+#   majority_label   — label = class occupying most of the window
+#   strict           — window discarded if it crosses a boundary
+#   onset_aligned    — windows aligned to trial onset only
+
+# ─── NOTES ──────────────────────────────────────────────────────────────────
+notes: >
+  Window size and stride must be pilot-validated. A window crossing
+  incompatible event boundaries must follow the documented label_policy.
+  Do not use windows that span fundamentally different signal conditions
+  without an explicit and documented policy.

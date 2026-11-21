@@ -1,0 +1,16 @@
+{
+  "model_type": "eeg-cnn1d",
+  "model_id": "eeg-cnn1d-prod",
+  "input_channels": 2,
+  "hyperparams": {
+    "cnn_filters": 16,
+    "cnn_kernel_size": 7,
+    "cnn_layers": 2,
+    "dropout": 0.3,
+    "learning_rate": 0.001,
+    "n_epochs": 6,
+    "batch_size": 32,
+    "random_state": 42
+  },
+  "labels_frozen": false
+}

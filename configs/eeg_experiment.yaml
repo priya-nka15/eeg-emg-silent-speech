@@ -1,0 +1,55 @@
+# URF/A-SSR EEG Experiment Configuration
+# Version: TBD
+# Date: 2026-10-08
+#
+# EEG task/labels are NOT frozen before the pilot (PRD §21, DL-006).
+# Candidate conditions are listed below; final conditions require pilot validation.
+# Do NOT label a trial as "distress" merely because a participant was told to feel it.
+
+eeg_experiment_version: "TBD"    # PILOT-VALIDATED
+
+# ─── STATUS ─────────────────────────────────────────────────────────────────
+labels_frozen: false              # Must remain false until after EEG pilot (Gate 5→6)
+final_conditions: "TBD"          # PILOT-VALIDATED
+
+# ─── CANDIDATE CONDITIONS ───────────────────────────────────────────────────
+# These are candidates only. Final conditions selected after pilot.
+candidate_conditions:
+  - name: "rest_baseline"
+    description: "Resting baseline, eyes open or closed (TBD from pilot)"
+    status: "CANDIDATE"
+  - name: "focused_attention"
+    description: "Focused attention task (TBD from pilot)"
+    status: "CANDIDATE"
+  - name: "cognitive_workload_low"
+    description: "Low cognitive workload condition (TBD from pilot)"
+    status: "CANDIDATE"
+  - name: "cognitive_workload_high"
+    description: "High cognitive workload condition (TBD from pilot)"
+    status: "CANDIDATE"
+  - name: "positive_affect"
+    description: "Positive affective state (TBD from pilot)"
+    status: "CANDIDATE"
+  - name: "controlled_stress"
+    description: "Controlled stress-related condition (TBD from pilot)"
+    status: "CANDIDATE"
+
+# ─── CONDITION DEFINITION REQUIREMENTS ──────────────────────────────────────
+# Every final condition must specify (per PRD §21):
+#   - operational_task_or_stimulus
+#   - participant_instructions
+#   - onset
+#   - duration
+#   - recovery
+#   - label_definition
+#   - participant_safety_procedure
+#   - optional_self_report
+
+# ─── CONTAMINATION PILOT ────────────────────────────────────────────────────
+# PRD §22: Explicitly compare these conditions before freezing EEG labels:
+contamination_pilot_conditions:
+  - "rest"
+  - "cognitive_task_without_articulation"
+  - "silent_articulation"
+  - "cognitive_state_plus_silent_articulation"
+contamination_pilot_complete: false

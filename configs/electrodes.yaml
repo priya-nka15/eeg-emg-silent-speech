@@ -1,0 +1,106 @@
+# URF/A-SSR Electrode Configuration
+# Version: 1
+# Date: 2026-10-08
+#
+# All IN+/IN- positions are TBD until the actual PCB schematic is supplied.
+# Do NOT invent electrode wiring.
+# Do NOT infer that a differential pair means two electrodes at the same named 10-20 location.
+# Update this file from the actual PCB schematic and record in docs/decision_log.md.
+# See docs/electrode_map.md for full documentation.
+
+electrode_config_version: "1"
+
+topology:
+  total_electrodes: 14            # 12 signal + 1 EEG ref + 1 EMG ref
+  signal_electrodes: 12           # 2 per differential channel × 6 channels
+  eeg_reference_electrodes: 1
+  emg_reference_electrodes: 1
+
+channels:
+  CH1:
+    name: "EEG_Fp1"
+    modality: "EEG"
+    anatomical_target: "Fp1"
+    electrode_in_plus:
+      id: "E01"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    electrode_in_minus:
+      id: "E02"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    reference: "EEG_REF"
+    status: "FROZEN"
+
+  CH2:
+    name: "EEG_Fp2"
+    modality: "EEG"
+    anatomical_target: "Fp2"
+    electrode_in_plus:
+      id: "E03"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    electrode_in_minus:
+      id: "E04"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    reference: "EEG_REF"
+    status: "FROZEN"
+
+  CH3:
+    name: "EMG_Submental"
+    modality: "EMG"
+    anatomical_target: "Submental/anterior-digastric region"
+    electrode_in_plus:
+      id: "E05"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    electrode_in_minus:
+      id: "E06"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    reference: "EMG_REF"
+    status: "FROZEN"
+
+  CH4:
+    name: "EMG_Orbicularis"
+    modality: "EMG"
+    anatomical_target: "Orbicularis oris"
+    electrode_in_plus:
+      id: "E07"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    electrode_in_minus:
+      id: "E08"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    reference: "EMG_REF"
+    status: "FROZEN"
+
+  CH5:
+    name: "EMG_Zygomaticus"
+    modality: "EMG"
+    anatomical_target: "Zygomaticus major"
+    electrode_in_plus:
+      id: "E09"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    electrode_in_minus:
+      id: "E10"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    reference: "EMG_REF"
+    status: "FROZEN"
+
+  CH6:
+    name: "EMG_Buccinator"
+    modality: "EMG"
+    anatomical_target: "Buccinator"
+    electrode_in_plus:
+      id: "E11"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    electrode_in_minus:
+      id: "E12"
+      location: "TBD"             # HARDWARE-TBD — from PCB schematic
+    reference: "EMG_REF"
+    status: "FROZEN"
+
+references:
+  EEG_REF:
+    id: "E13"
+    location: "TBD"               # HARDWARE-TBD
+    note: "Common EEG reference. NOT automatically an LMS/NLMS motion-artifact reference."
+
+  EMG_REF:
+    id: "E14"
+    location: "TBD"               # HARDWARE-TBD

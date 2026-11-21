@@ -1,0 +1,28 @@
+# URF/A-SSR Safety Engine Configuration
+# Version: TBD
+# Date: 2026-10-08
+#
+# Safety engine is DISABLED by default.
+# Must remain disabled until:
+#   - EEG labels are frozen (Gate 6)
+#   - trigger_state is confirmed from pilot
+#   - confidence thresholds are validated (Gate 8/9)
+#   - temporal_requirement is validated (Gate 10)
+#
+# Do NOT set enabled: true before all TBD fields are resolved.
+
+safety_config_version: "TBD"
+
+safety:
+  enabled: false                  # MUST remain false until validated
+
+  # ─── TRIGGER ──────────────────────────────────────────────────────────────
+  trigger_intent: "HELP"          # FROZEN — PRD §37
+  trigger_state: "TBD"            # PILOT-VALIDATED — EEG label not frozen; do NOT use DISTRESS
+
+  # ─── CONFIDENCE THRESHOLDS ────────────────────────────────────────────────
+  min_intent_confidence: "TBD"    # PILOT-VALIDATED — after Gate 8
+  min_state_confidence: "TBD"     # PILOT-VALIDATED — after Gate 9
+
+  # ─── TEMPORAL REQUIREMENT ─────────────────────────────────────────────────
+  temporal_requirement: "TBD"     # PILOT-VALIDATED — after Gate 10

@@ -1,0 +1,17 @@
+# URF/A-SSR Python dependencies
+# Pin exact versions for reproducibility (PRD §62)
+
+# Core scientific
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.5.2
+
+# YAML parsing
+PyYAML==6.0.2
+
+# Deep learning (optional — required for GRU, CNN-GRU, 1D-CNN models)
+# torch==2.4.1  # uncomment when hardware is available
+
+# Testing
+pytest==8.3.3
+pytest-cov==5.0.0

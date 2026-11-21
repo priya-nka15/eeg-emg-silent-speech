@@ -1,0 +1,119 @@
+# URF/A-SSR Hardware Configuration
+# Version: 1
+# Date: 2026-10-08
+#
+# IMPORTANT: All TBD fields must be filled from verified hardware documentation.
+# Do not invent values. Record updates in docs/decision_log.md.
+# The actual PCB schematic is authoritative for all wiring and hardware details.
+
+hardware_config_version: "1"
+
+# ─── AFE ────────────────────────────────────────────────────────────────────
+afe:
+  family: "ADS1298-class"         # EVIDENCE-BACKED: TI ADS1298 family
+  part_number: "TBD"              # HARDWARE-TBD: exact purchased/assembled part
+  channels_total: 8               # EVIDENCE-BACKED: ADS1298 family is 8-channel
+  channels_used: 6                # FROZEN: 6 biopotential channels
+  resolution_bits: 24             # EVIDENCE-BACKED
+  acquisition_mode: "simultaneous"  # EVIDENCE-BACKED
+  sample_rate_range_sps:          # EVIDENCE-BACKED: ADS1298 datasheet range
+    min: 250
+    max: 32000
+
+# ─── MCU ────────────────────────────────────────────────────────────────────
+mcu:
+  family: "ESP32-S3"              # FROZEN
+  module: "TBD"                   # HARDWARE-TBD: exact module/variant
+  firmware_revision: "TBD"        # HARDWARE-TBD
+
+# ─── PCB ────────────────────────────────────────────────────────────────────
+pcb:
+  revision: "TBD"                 # HARDWARE-TBD
+
+# ─── SAMPLING ───────────────────────────────────────────────────────────────
+sampling:
+  target_rate_hz: 4000            # PROJECT-TARGET: 4 kSPS
+  # Derived values at 4 kSPS:
+  sample_interval_us: 250
+  samples_per_second: 4000
+  samples_per_500ms: 2000
+  samples_per_1s: 4000
+  samples_per_2s: 8000
+  # Measured rate must be verified from counter/timestamps — not assumed:
+  measured_rate_hz: null          # HARDWARE-TBD: set after H2 validation
+
+# ─── GAIN ───────────────────────────────────────────────────────────────────
+gain:
+  eeg: "TBD"                      # HARDWARE-TBD
+  emg: "TBD"                      # HARDWARE-TBD
+
+# ─── CHANNEL MAPPING ────────────────────────────────────────────────────────
+# See docs/electrode_map.md and configs/electrodes.yaml for full wiring details.
+# IN+/IN- assignments are TBD pending PCB schematic.
+channels:
+  CH1:
+    name: "EEG_Fp1"
+    modality: "EEG"
+    anatomical_target: "Fp1"
+    afe_input: "TBD"              # HARDWARE-TBD
+    status: "FROZEN"
+  CH2:
+    name: "EEG_Fp2"
+    modality: "EEG"
+    anatomical_target: "Fp2"
+    afe_input: "TBD"              # HARDWARE-TBD
+    status: "FROZEN"
+  CH3:
+    name: "EMG_Submental"
+    modality: "EMG"
+    anatomical_target: "Submental/anterior-digastric"
+    afe_input: "TBD"              # HARDWARE-TBD
+    status: "FROZEN"
+  CH4:
+    name: "EMG_Orbicularis"
+    modality: "EMG"
+    anatomical_target: "Orbicularis oris"
+    afe_input: "TBD"              # HARDWARE-TBD
+    status: "FROZEN"
+  CH5:
+    name: "EMG_Zygomaticus"
+    modality: "EMG"
+    anatomical_target: "Zygomaticus major"
+    afe_input: "TBD"              # HARDWARE-TBD
+    status: "FROZEN"
+  CH6:
+    name: "EMG_Buccinator"
+    modality: "EMG"
+    anatomical_target: "Buccinator"
+    afe_input: "TBD"              # HARDWARE-TBD
+    status: "FROZEN"
+
+# ─── REFERENCES ─────────────────────────────────────────────────────────────
+# NOTE: EEG reference is NOT automatically an LMS/NLMS motion-artifact reference.
+references:
+  eeg_reference:
+    location: "TBD"               # HARDWARE-TBD
+    physical_electrode: "E13"
+  emg_reference:
+    location: "TBD"               # HARDWARE-TBD
+    physical_electrode: "E14"
+
+# ─── TRANSPORT ──────────────────────────────────────────────────────────────
+transport:
+  protocol: "TBD"                 # HARDWARE-TBD (e.g. UART/USB/BLE/WiFi)
+  baud_rate: "TBD"                # HARDWARE-TBD
+  frame_format_version: "TBD"     # HARDWARE-TBD
+
+# ─── DATA REPRESENTATION ────────────────────────────────────────────────────
+data_representation:
+  raw_or_filtered: "TBD"          # HARDWARE-TBD
+  adc_units: "TBD"                # HARDWARE-TBD
+  voltage_conversion_factor: "TBD"  # HARDWARE-TBD
+  sample_id_type: "uint32"        # rolling counter
+  timestamp_epoch: "TBD"         # HARDWARE-TBD
+  timestamp_resolution_us: "TBD"  # HARDWARE-TBD
+
+# ─── HUMAN USE SAFETY ───────────────────────────────────────────────────────
+# Must remain false until hardware team/institution completes safety review.
+# See docs/safety_spec.md and docs/validation_report.md.
+human_use_ready: false

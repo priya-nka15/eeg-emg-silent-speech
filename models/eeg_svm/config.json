@@ -1,0 +1,12 @@
+{
+  "model_type": "eeg-svm",
+  "model_id": "eeg-svm-prod",
+  "hyperparams": {
+    "C": 1.0,
+    "kernel": "rbf",
+    "gamma": "scale",
+    "random_state": 42
+  },
+  "labels_frozen": false,
+  "note": "EEG labels are TBD until pilot completion (PRD \u00a721). Do not use in final pipeline."
+}

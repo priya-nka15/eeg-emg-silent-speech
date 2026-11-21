@@ -1,0 +1,14 @@
+{
+  "model_type": "emg-gru",
+  "model_id": "emg-gru-prod",
+  "input_size": 4,
+  "hyperparams": {
+    "hidden_size": 32,
+    "num_layers": 1,
+    "dropout": 0.2,
+    "learning_rate": 0.001,
+    "n_epochs": 6,
+    "batch_size": 32,
+    "random_state": 42
+  }
+}

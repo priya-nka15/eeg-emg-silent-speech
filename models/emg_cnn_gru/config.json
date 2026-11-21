@@ -1,0 +1,16 @@
+{
+  "model_type": "emg-cnn-gru",
+  "model_id": "emg-cnn-gru-prod",
+  "input_size": 4,
+  "hyperparams": {
+    "cnn_filters": 16,
+    "cnn_kernel_size": 5,
+    "gru_hidden_size": 32,
+    "gru_num_layers": 1,
+    "dropout": 0.3,
+    "learning_rate": 0.001,
+    "n_epochs": 6,
+    "batch_size": 32,
+    "random_state": 42
+  }
+}

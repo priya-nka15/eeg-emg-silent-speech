@@ -1,0 +1,616 @@
+{
+  "evaluation_protocol": "Strict Leave-One-Subject-Out (LOSO) Cross-Validation",
+  "description": "Zero data leakage cross-subject validation across 6 subjects",
+  "emg_branch": {
+    "SVM": {
+      "modality": "EMG",
+      "model_type": "SVM",
+      "validation_strategy": "strict_LOSO",
+      "n_folds": 6,
+      "total_samples": 370,
+      "macro_f1": 0.45253267568178934,
+      "accuracy": 0.4486486486486487,
+      "precision": 0.4550700358322863,
+      "recall": 0.4526751008434176,
+      "confusion_matrix": [
+        [
+          48,
+          28,
+          25
+        ],
+        [
+          26,
+          58,
+          60
+        ],
+        [
+          21,
+          44,
+          60
+        ]
+      ],
+      "labels": [
+        "YES",
+        "NO",
+        "HELP"
+      ],
+      "per_class": {
+        "YES": {
+          "precision": 0.5052631578947369,
+          "recall": 0.4752475247524752,
+          "f1": 0.4897959183673469,
+          "support": 101
+        },
+        "NO": {
+          "precision": 0.4461538461538462,
+          "recall": 0.4027777777777778,
+          "f1": 0.4233576642335766,
+          "support": 144
+        },
+        "HELP": {
+          "precision": 0.41379310344827586,
+          "recall": 0.48,
+          "f1": 0.4444444444444444,
+          "support": 125
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "held_out_subject": "Subject_01",
+          "train_samples": 299,
+          "test_samples": 71,
+          "accuracy": 0.5352112676056338,
+          "macro_f1": 0.5198464912280701
+        },
+        {
+          "fold": 2,
+          "held_out_subject": "Subject_02",
+          "train_samples": 321,
+          "test_samples": 49,
+          "accuracy": 0.40816326530612246,
+          "macro_f1": 0.40654596713801155
+        },
+        {
+          "fold": 3,
+          "held_out_subject": "Subject_03",
+          "train_samples": 302,
+          "test_samples": 68,
+          "accuracy": 0.4117647058823529,
+          "macro_f1": 0.27705627705627706
+        },
+        {
+          "fold": 4,
+          "held_out_subject": "Subject_04",
+          "train_samples": 298,
+          "test_samples": 72,
+          "accuracy": 0.4583333333333333,
+          "macro_f1": 0.37176470588235294
+        },
+        {
+          "fold": 5,
+          "held_out_subject": "Subject_05",
+          "train_samples": 298,
+          "test_samples": 72,
+          "accuracy": 0.4861111111111111,
+          "macro_f1": 0.463161850105896
+        },
+        {
+          "fold": 6,
+          "held_out_subject": "Subject_06",
+          "train_samples": 332,
+          "test_samples": 38,
+          "accuracy": 0.3157894736842105,
+          "macro_f1": 0.27038727038727045
+        }
+      ],
+      "help_recall": 0.48,
+      "false_help_activations": 85,
+      "help_support": 125
+    },
+    "GRU": {
+      "modality": "EMG",
+      "model_type": "GRU",
+      "validation_strategy": "strict_LOSO",
+      "n_folds": 6,
+      "total_samples": 370,
+      "macro_f1": 0.3236862386463412,
+      "accuracy": 0.35405405405405405,
+      "precision": 0.34841269841269845,
+      "recall": 0.3325911257792446,
+      "confusion_matrix": [
+        [
+          18,
+          67,
+          16
+        ],
+        [
+          23,
+          80,
+          41
+        ],
+        [
+          15,
+          77,
+          33
+        ]
+      ],
+      "labels": [
+        "YES",
+        "NO",
+        "HELP"
+      ],
+      "per_class": {
+        "YES": {
+          "precision": 0.32142857142857145,
+          "recall": 0.1782178217821782,
+          "f1": 0.22929936305732485,
+          "support": 101
+        },
+        "NO": {
+          "precision": 0.35714285714285715,
+          "recall": 0.5555555555555556,
+          "f1": 0.43478260869565216,
+          "support": 144
+        },
+        "HELP": {
+          "precision": 0.36666666666666664,
+          "recall": 0.264,
+          "f1": 0.30697674418604654,
+          "support": 125
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "held_out_subject": "Subject_01",
+          "train_samples": 299,
+          "test_samples": 71,
+          "accuracy": 0.323943661971831,
+          "macro_f1": 0.2597701149425287
+        },
+        {
+          "fold": 2,
+          "held_out_subject": "Subject_02",
+          "train_samples": 321,
+          "test_samples": 49,
+          "accuracy": 0.3469387755102041,
+          "macro_f1": 0.20537634408602148
+        },
+        {
+          "fold": 3,
+          "held_out_subject": "Subject_03",
+          "train_samples": 302,
+          "test_samples": 68,
+          "accuracy": 0.4117647058823529,
+          "macro_f1": 0.40199469618355815
+        },
+        {
+          "fold": 4,
+          "held_out_subject": "Subject_04",
+          "train_samples": 298,
+          "test_samples": 72,
+          "accuracy": 0.3194444444444444,
+          "macro_f1": 0.16140350877192983
+        },
+        {
+          "fold": 5,
+          "held_out_subject": "Subject_05",
+          "train_samples": 298,
+          "test_samples": 72,
+          "accuracy": 0.375,
+          "macro_f1": 0.29523809523809524
+        },
+        {
+          "fold": 6,
+          "held_out_subject": "Subject_06",
+          "train_samples": 332,
+          "test_samples": 38,
+          "accuracy": 0.34210526315789475,
+          "macro_f1": 0.1699346405228758
+        }
+      ],
+      "help_recall": 0.264,
+      "false_help_activations": 57,
+      "help_support": 125
+    },
+    "CNN-GRU": {
+      "modality": "EMG",
+      "model_type": "CNN-GRU",
+      "validation_strategy": "strict_LOSO",
+      "n_folds": 6,
+      "total_samples": 370,
+      "macro_f1": 0.25203025563007564,
+      "accuracy": 0.34594594594594597,
+      "precision": 0.22869201418283094,
+      "recall": 0.3082592592592593,
+      "confusion_matrix": [
+        [
+          0,
+          84,
+          17
+        ],
+        [
+          0,
+          94,
+          50
+        ],
+        [
+          0,
+          91,
+          34
+        ]
+      ],
+      "labels": [
+        "YES",
+        "NO",
+        "HELP"
+      ],
+      "per_class": {
+        "YES": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 101
+        },
+        "NO": {
+          "precision": 0.34944237918215615,
+          "recall": 0.6527777777777778,
+          "f1": 0.4552058111380145,
+          "support": 144
+        },
+        "HELP": {
+          "precision": 0.33663366336633666,
+          "recall": 0.272,
+          "f1": 0.3008849557522124,
+          "support": 125
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "held_out_subject": "Subject_01",
+          "train_samples": 299,
+          "test_samples": 71,
+          "accuracy": 0.352112676056338,
+          "macro_f1": 0.2745893719806763
+        },
+        {
+          "fold": 2,
+          "held_out_subject": "Subject_02",
+          "train_samples": 321,
+          "test_samples": 49,
+          "accuracy": 0.3673469387755102,
+          "macro_f1": 0.2620545073375262
+        },
+        {
+          "fold": 3,
+          "held_out_subject": "Subject_03",
+          "train_samples": 302,
+          "test_samples": 68,
+          "accuracy": 0.35294117647058826,
+          "macro_f1": 0.17391304347826086
+        },
+        {
+          "fold": 4,
+          "held_out_subject": "Subject_04",
+          "train_samples": 298,
+          "test_samples": 72,
+          "accuracy": 0.3333333333333333,
+          "macro_f1": 0.16666666666666666
+        },
+        {
+          "fold": 5,
+          "held_out_subject": "Subject_05",
+          "train_samples": 298,
+          "test_samples": 72,
+          "accuracy": 0.3333333333333333,
+          "macro_f1": 0.16666666666666666
+        },
+        {
+          "fold": 6,
+          "held_out_subject": "Subject_06",
+          "train_samples": 332,
+          "test_samples": 38,
+          "accuracy": 0.34210526315789475,
+          "macro_f1": 0.1699346405228758
+        }
+      ],
+      "help_recall": 0.272,
+      "false_help_activations": 67,
+      "help_support": 125
+    }
+  },
+  "eeg_branch": {
+    "SVM": {
+      "modality": "EEG",
+      "model_type": "SVM",
+      "validation_strategy": "strict_LOSO",
+      "n_folds": 6,
+      "total_samples": 240,
+      "macro_f1": 0.3617021276595745,
+      "accuracy": 0.5666666666666667,
+      "precision": 0.2833333333333333,
+      "recall": 0.5,
+      "confusion_matrix": [
+        [
+          136,
+          0
+        ],
+        [
+          104,
+          0
+        ]
+      ],
+      "labels": [
+        "Neutral",
+        "Stressed"
+      ],
+      "per_class": {
+        "Neutral": {
+          "precision": 0.5666666666666667,
+          "recall": 1.0,
+          "f1": 0.723404255319149,
+          "support": 136
+        },
+        "Stressed": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 104
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "held_out_subject": "Subject_01",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.475,
+          "macro_f1": 0.3220338983050847
+        },
+        {
+          "fold": 2,
+          "held_out_subject": "Subject_02",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.625,
+          "macro_f1": 0.38461538461538464
+        },
+        {
+          "fold": 3,
+          "held_out_subject": "Subject_03",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.55,
+          "macro_f1": 0.3548387096774194
+        },
+        {
+          "fold": 4,
+          "held_out_subject": "Subject_04",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.4,
+          "macro_f1": 0.2857142857142857
+        },
+        {
+          "fold": 5,
+          "held_out_subject": "Subject_05",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.6,
+          "macro_f1": 0.375
+        },
+        {
+          "fold": 6,
+          "held_out_subject": "Subject_06",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.75,
+          "macro_f1": 0.42857142857142855
+        }
+      ]
+    },
+    "Small 1D-CNN": {
+      "modality": "EEG",
+      "model_type": "Small 1D-CNN",
+      "validation_strategy": "strict_LOSO",
+      "n_folds": 6,
+      "total_samples": 240,
+      "macro_f1": 0.4088261700315384,
+      "accuracy": 0.5541666666666667,
+      "precision": 0.4883935637035083,
+      "recall": 0.4968891402714932,
+      "confusion_matrix": [
+        [
+          126,
+          10
+        ],
+        [
+          97,
+          7
+        ]
+      ],
+      "labels": [
+        "Neutral",
+        "Stressed"
+      ],
+      "per_class": {
+        "Neutral": {
+          "precision": 0.5650224215246636,
+          "recall": 0.9264705882352942,
+          "f1": 0.7019498607242339,
+          "support": 136
+        },
+        "Stressed": {
+          "precision": 0.4117647058823529,
+          "recall": 0.0673076923076923,
+          "f1": 0.11570247933884298,
+          "support": 104
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "held_out_subject": "Subject_01",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.475,
+          "macro_f1": 0.3220338983050847
+        },
+        {
+          "fold": 2,
+          "held_out_subject": "Subject_02",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.55,
+          "macro_f1": 0.39999999999999997
+        },
+        {
+          "fold": 3,
+          "held_out_subject": "Subject_03",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.55,
+          "macro_f1": 0.3548387096774194
+        },
+        {
+          "fold": 4,
+          "held_out_subject": "Subject_04",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.4,
+          "macro_f1": 0.3939393939393939
+        },
+        {
+          "fold": 5,
+          "held_out_subject": "Subject_05",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.6,
+          "macro_f1": 0.375
+        },
+        {
+          "fold": 6,
+          "held_out_subject": "Subject_06",
+          "train_samples": 200,
+          "test_samples": 40,
+          "accuracy": 0.75,
+          "macro_f1": 0.42857142857142855
+        }
+      ]
+    }
+  },
+  "safety_engine": {
+    "status": "PASSED",
+    "confidence_threshold": 0.7,
+    "total_tests": 9,
+    "passed_tests": 9,
+    "no_decision_below_threshold_verified": true,
+    "test_log": [
+      {
+        "intent": "HELP",
+        "state": "Stressed",
+        "intent_confidence": 0.85,
+        "state_confidence": 0.85,
+        "actual_output": "ACTION",
+        "expected_output": "ACTION",
+        "rule_applied": "all_rules_passed",
+        "passed": true
+      },
+      {
+        "intent": "HELP",
+        "state": "Stressed",
+        "intent_confidence": 0.65,
+        "state_confidence": 0.85,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "intent_confidence_below_threshold",
+        "passed": true
+      },
+      {
+        "intent": "HELP",
+        "state": "Stressed",
+        "intent_confidence": 0.85,
+        "state_confidence": 0.5,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "state_confidence_below_threshold",
+        "passed": true
+      },
+      {
+        "intent": "HELP",
+        "state": "Stressed",
+        "intent_confidence": 0.6,
+        "state_confidence": 0.6,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "intent_confidence_below_threshold",
+        "passed": true
+      },
+      {
+        "intent": "YES",
+        "state": "Stressed",
+        "intent_confidence": 0.95,
+        "state_confidence": 0.9,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "intent_mismatch",
+        "passed": true
+      },
+      {
+        "intent": "NO",
+        "state": "Stressed",
+        "intent_confidence": 0.95,
+        "state_confidence": 0.9,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "intent_mismatch",
+        "passed": true
+      },
+      {
+        "intent": "HELP",
+        "state": "Neutral",
+        "intent_confidence": 0.9,
+        "state_confidence": 0.9,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "state_mismatch",
+        "passed": true
+      },
+      {
+        "intent": "HELP",
+        "state": "Stressed",
+        "intent_confidence": 0.9,
+        "state_confidence": 0.9,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "signal_quality_not_ok",
+        "passed": true
+      },
+      {
+        "intent": "HELP",
+        "state": "Stressed",
+        "intent_confidence": 0.9,
+        "state_confidence": 0.9,
+        "actual_output": "NO_DECISION",
+        "expected_output": "NO_DECISION",
+        "rule_applied": "temporal_consistency_not_met",
+        "passed": true
+      }
+    ]
+  },
+  "saved_models": {
+    "models_dir": "models",
+    "emg_svm": "models/emg_svm",
+    "emg_svm_pkl": "models/emg_svm.pkl",
+    "emg_gru": "models/emg_gru",
+    "emg_gru_pt": "models/emg_gru.pt",
+    "emg_cnn_gru": "models/emg_cnn_gru",
+    "emg_cnn_gru_pt": "models/emg_cnn_gru.pt",
+    "eeg_svm": "models/eeg_svm",
+    "eeg_svm_pkl": "models/eeg_svm.pkl",
+    "eeg_cnn1d": "models/eeg_cnn1d",
+    "eeg_cnn1d_pt": "models/eeg_cnn1d.pt"
+  }
+}

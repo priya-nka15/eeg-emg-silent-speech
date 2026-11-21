@@ -1,0 +1,103 @@
+================================================================================
+                    URF / A-SSR SYSTEM EXECUTION GUIDE
+         Assistive Silent Speech & Non-Invasive BCI Software Platform
+================================================================================
+
+This guide provides end-to-end execution commands for the URF/A-SSR software
+pipeline, including real-time graphical monitoring, production model inference,
+signal quality control, hardware interface testing, and cross-subject benchmarks.
+
+--------------------------------------------------------------------------------
+1. REAL-TIME BCI GUI DASHBOARD (PyQt6 + PyQtGraph)
+--------------------------------------------------------------------------------
+Launch the professional BCI Neurodashboard to inspect real biological signals,
+trial state machine progression, intent classifications, and safety gating.
+
+  # Launch the interactive GUI on your desktop display:
+  python3 run_gui.py
+
+  # Or launch with a specific initial CSV recording:
+  python3 run_gui.py --file data/processed/Gaddy/Subject_01/Session_01/raw_signals.csv
+
+  # Headless validation mode (for automated CI/CD checks):
+  python3 run_gui.py --headless
+
+Interactive GUI Features:
+  1. Data Source Toolbar:
+     - "Data Source" Dropdown:
+       * Synchronized Multimodal (Real Gaddy EMG + Real DEAP EEG): Streams real
+         biological signals simultaneously across both EMG and EEG boxes in lock-step.
+       * Gaddy Dataset (Real Facial sEMG - 4 Channels)
+       * DEAP Dataset (Real Prefrontal EEG - 2 Channels)
+       * Custom CSV File...
+     - "Subject" Dropdown: Select Subject 01 to Subject 06.
+     - "Session" Dropdown: Select Session 01 or Session 02.
+     - "📂 Browse CSV..." Button: Open any recorded CSV file on your system.
+  2. Signal Displays in 2 Dedicated Boxes:
+     - BOX 1: 4-Channel Facial sEMG (Submental, Orbicularis, Zygomaticus, Buccinator)
+       * High-frequency domain (20–450 Hz, 2000 Hz sample rate).
+       * Real-time baseline DC removal centers signals around 0 μV.
+       * "Stack EMG Channels" checkbox: Vertically separates the 4 channels with
+         individual zero-reference lines so spikes and speech twitches never overlap.
+       * EMG Range Selector: Auto, ±100 μV, ±250 μV, ±500 μV, ±1000 μV.
+     - BOX 2: 2-Channel Prefrontal EEG (Fp1, Fp2)
+       * Low-frequency neural rhythms (1–30 Hz, Theta/Alpha/Beta waves).
+       * Real microvolt brainwaves with drift removal and auto-scaling.
+       * EEG Range Selector: Auto, ±25 μV, ±50 μV, ±100 μV.
+  3. Left Panel (State Machine):
+     - Luminous visual indicator cards for Rest -> Cue -> Action -> Recovery
+       synchronized with trials.json.
+  4. Right Panel (Prediction & Safety Engine):
+     - Large typography classified intent (YES / NO / HELP / NO_DECISION).
+     - Confidence gauge (0–100%) with 70% safety threshold cutoff.
+     - Signal QC status badge (PASSED/FAILED) and Safety Gate status (ACTION/NO_DECISION).
+  5. Bottom Panel:
+     - Real-time scrolling audit log with timestamps.
+
+--------------------------------------------------------------------------------
+2. REPLAY PIPELINE INFERENCE WITH TRAINED MODELS & SAFETY ENGINE
+--------------------------------------------------------------------------------
+Replay adapted recordings through the full production pipeline (windowing,
+feature extraction, trained SVM inference, confidence gating, and safety engine).
+Outputs will show actual predictions (YES, NO, HELP) and gate low confidence (<0.70)
+or degraded signals to NO_DECISION.
+
+  python3 -m backend replay data/processed/Gaddy/Subject_01/Session_01/raw_signals.csv
+
+--------------------------------------------------------------------------------
+3. SIGNAL QUALITY CONTROL (QC) VALIDATION
+--------------------------------------------------------------------------------
+Run automated multi-channel quality control checks (flatline detection, sample
+rate verification, and dropped packet detection) on adapted recordings.
+
+  # Validate adapted DEAP recording (EEG modality)
+  python3 -m backend validate-recording data/processed/DEAP/Subject_01/Session_01/raw_signals.csv
+
+  # Validate adapted Gaddy recording (EMG modality)
+  python3 -m backend validate-recording data/processed/Gaddy/Subject_01/Session_01/raw_signals.csv
+
+--------------------------------------------------------------------------------
+4. HARDWARE INTERFACE VALIDATION (MOCK MODE)
+--------------------------------------------------------------------------------
+Verify the hardware acquisition interface, UART packet parsing, and ring buffer
+integrity in mock hardware mode.
+
+  python3 scripts/validate_hardware.py --mock
+
+--------------------------------------------------------------------------------
+5. RE-TRAIN MODELS & RUN STRICT LOSO EXPERIMENTS
+--------------------------------------------------------------------------------
+Re-run strict Leave-One-Subject-Out (LOSO) cross-validation across all 6 subjects
+for EMG (SVM, GRU, CNN-GRU) and EEG (SVM, Small 1D-CNN), verify deterministic
+safety engine gating, and export weights to models/ and results to experiments/results.json.
+
+  python3 scripts/run_experiments.py
+
+--------------------------------------------------------------------------------
+6. RUN COMPLETE TEST SUITE
+--------------------------------------------------------------------------------
+Execute the comprehensive automated test suite verifying zero data leakage,
+deterministic safety gating, QC checks, and interface contracts.
+
+  pytest tests/ -v
+================================================================================

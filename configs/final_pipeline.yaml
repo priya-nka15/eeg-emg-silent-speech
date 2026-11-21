@@ -1,0 +1,40 @@
+# URF/A-SSR Final Pipeline Configuration
+# Version: TBD
+# Date: 2026-10-08
+#
+# IMPORTANT: Official final mode must refuse to start if mandatory fields remain TBD.
+# Fields will be populated after each acceptance gate passes.
+# See docs/implementation_status.md for gate status.
+
+pipeline_config_version: "TBD"   # Populated after Gate 10
+
+# ─── HARDWARE ───────────────────────────────────────────────────────────────
+hardware_version: "TBD"           # HARDWARE-TBD — after Gate 2
+firmware_version: "TBD"           # HARDWARE-TBD — after Gate 2
+
+# ─── PREPROCESSING ──────────────────────────────────────────────────────────
+preprocessing_version: "TBD"     # PILOT-VALIDATED — after Gate 6
+
+# ─── EMG MODEL ──────────────────────────────────────────────────────────────
+emg:
+  model_id: "TBD"                 # After Gate 8 — EMG ML comparison complete
+  # Allowed values after Gate 8: emg-svm-v*, emg-gru-v*, emg-cnn-gru-v*
+
+# ─── EEG MODEL ──────────────────────────────────────────────────────────────
+eeg:
+  model_id: "TBD"                 # After Gate 9 — EEG ML comparison complete
+  # May remain TBD if EEG feasibility is not demonstrated
+
+# ─── FUSION ─────────────────────────────────────────────────────────────────
+fusion:
+  method: "decision_level"        # FROZEN — PRD §34
+  config_version: "TBD"          # After Gate 10
+
+# ─── TEMPORAL CONSISTENCY ───────────────────────────────────────────────────
+temporal:
+  config_version: "TBD"          # After Gate 10 — thresholds from validation
+
+# ─── SAFETY ─────────────────────────────────────────────────────────────────
+safety:
+  config_version: "TBD"          # After Gate 10
+  enabled: false                  # MUST remain false until thresholds validated
